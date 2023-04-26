@@ -1,0 +1,20 @@
+// Install Firebase CLI using npm (installed node.js required)
+npm install -g firebase-tools
+
+// Login into firebase
+firebase login
+
+// Initilaize firebase 
+(run on cmd within the folder containing website)
+firebase init 
+(select both line starting with hosting) [space to select]
+(enter once done)
+
+// Deploy firebase
+firebase deploy
+(if you have an exesting project selecte >from existing)
+(else create new)
+(proceed ahead by entering 'y')
+(Enter your directory name) [use name as build]
+
+
