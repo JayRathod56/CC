@@ -1,0 +1,90 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Creating a Form to add two num and show its answer in Django
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Lets First create the project
+django-admin startproject Addition_Form
+
+# Create a folder named templates
+mkdir templaetes
+
+# changing drive to Add_Form
+cd Add_Form
+
+# creating app
+django-admin startapp Add_app
+
+create Add_Form.html and results.html file within templaets folder
+
+create urls.py file in Add_app
+
+coding part
+
+#urls.py within Addition_Form
+
+from django.urls import path,include
+from django.contrib import admin
+
+urlpatterns = [
+    path('', include('Add_app.urls')),
+    path('admin/', admin.site.urls),
+]
+
+#configure templates in settings.py within Addition_Form
+
+#Find TEMPLATES in it
+# and then find 'DIRS':[]
+# Then write 
+'DIRS': [os.path.join(BASE_DIR, 'templates')]
+
+# views.py within Add_app
+
+from django.shortcuts import render
+
+def Add_Form(request):
+    return render(request, 'Add_Form.html')
+
+def resultss(request):
+    val1 = request.GET['num1']
+    val1 = int(val1)
+    val2 = request.GET['num2']
+    val2 = int(val2)
+
+    result = val1+val2
+
+    return render(request, 'results.html', {'result': result})
+
+
+
+# urls.py within Add_app
+
+from django.urls import path,include
+from . import views
+
+urlpatterns = [
+    path('add2', views.resultss, name='results'),
+    path('', views.Add_Form, name='Add_Form'),
+]
+
+
+#Add_Form.html within templates
+
+<form action="add2">
+
+    Enter the first number : <input type="text" name="num1" id="">
+    <br>
+    Enter the second number : <input type="text" name="num2" id="">
+    <input type="submit">
+
+
+</form>
+
+
+#result.html within templates
+
+ {% block content %}
+    <h1>The Result Is :</h1>
+ <br>
+ <br>
+    Result = {{result}}
+ {% endblock %}
