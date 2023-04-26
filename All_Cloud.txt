@@ -1,0 +1,177 @@
+AIM: Client Server Architecture and VM Ware
+
+Screenshots:
+
+A)Steps to Configure MYSQL and Apache
+
+B)Start Services (Mysql and Apache) & set up HTML Page and Host it
+
+(List of commands needed in this section)
+
+sudo apt update
+sudo service mysql start
+sudo service apache2 start
+cd /var/www/html
+sudo nano index.html
+ifconfig
+
+(This index.html file will be there automatically since we’ve installed Apache2 server)
+If not present you could add your own html content*
+
+(To close this notepad press ctrl+ x, y, Enter in series)
+
+(You need to check your machine’s IP address using ifcommand shown below)
+And by using this IP address you can view your locally hosted index.html file 
+
+C) Accessing your locally hosted file
+
+(Note: This file cannot be accessed over the internet and can only be accessed by your local machine’s on the same network by using ip/file_name to access it)
+
+------------------------------------------------------------------------------------
+Practical - 01
+
+AIM: Creating AWS Account, EC2 instance & Configuration
+
+a) Sign into your aws account then
+Goto EC2 > Launch instance
+
+b) Once clicked on Launch instance give your Instance a name (I’ve given Django Test 2), you also need to select the OS (in this case I have selected UBUNTU as this is more familiar and offered free by aws,  however you are free to choose any)
+
+c) Create a new key-pair or use one if you have already created
+A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an Amazon EC2 instance. For more info: Amazon EC2 key pairs and Linux instances - Amazon Elastic Compute Cloud
+
+d) These are the basic steps to configure EC2 instance, Now Click on Launch instance > Connect
+
+Note: If you see such errors, wait patiently as the Instances take time to startup you can check the progress/state of your created instance on your running EC2 Instance window )
+
+-------------------------------------------------------------------------------------
+Practical - 03
+
+AIM: Hosting on Firebase
+
+download and install node
+>> powershell will open press enter and do till end
+
+then go to cmd and install firebase using
+>> npm install -g firebase-tools
+
+open a folder use this command to create an react app
+>> npx create-react-app my-app 
+(my-app is app name you can change it anytime)
+
+open created app folder and open cmd there and use this command to start website
+>> npm start
+(website will be started on browser means everything is success)
+
+Login firebase using
+>> firebase login
+
+Now stop the website by closing the terminal open new terminal there and initialize firebase
+>> firebase init
+
+(press y and then select hosting)
+
+at public write build
+overwrite index.html yes
+github as no
+
+then press enter
+
+Now use this command to run build
+>> npm run build 
+
+Then use command firebase deploy
+>> firebase deploy
+
+You will se an hosting link open it
+
+if you see Firebase Hosting Setup Complete means you are wrong
+
+delete build and rerun all commands!!!
+
+-------------------------------------------------------------------------------------
+Practical - 04
+
+AIM: Client server Architecture and VM ware (AWS)
+
+Screenshots:
+
+A)Create and Launch EC2 Instance (Ubuntu as OS)
+B)These are the set of commands used
+
+sudo apt update
+sudoa apt install apache2
+cd /var/www/html
+sudo nano index.html
+
+C)This is the index.html file (which will be present automatically as we have installed apache2 )
+*you can change the content if you want
+
+D) Specify Inbound Traffic so we can access our hosted file over the internet from anywhere and anydevice
+
+D)You can access the hosted index.html file by using the public ip of the EC2 instance
+
+------------------------------------------------------------------------------------
+Practical - 06
+
+AIM: Identity and Access Management
+
+1. Create IAM
+Services >> Security & Compliance >> IAM
+
+specify username
+select I want to create an IAM user with custom password
+Add user to group, specify user group name and permissions
+Admin Access
+IAM user change pass
+AmazonAPIGatewayAdmin
+
+To login as IAM user first copy your Accound ID from top right account section
+
+Then go to aws.amazon.com and log in as IAM using 
+account number (copied by you)
+IAM username & pass (specified by you)
+
+Once in IAM try changing your password from settings
+This will be permitted since we have specified the permissions for it
+
+------------------------------------------------------------------------------------
+Practical - 07
+
+AIM: Storage on S3 and firestore
+
+Go to Amazon S3 create a bucket
+
+Upload a file to it
+
+Log into different IAM (you need to specify permission of full control of S3)
+
+And show accessing the S3 from the logged in IAM user
+
+------------------------------------------------------------------------------------
+Practical - 08
+
+AIM: Load Balancing
+
+Create 2 EC2 instacnes
+
+Make both them running with their index.html file hosted as M1 and M2
+
+Go to load balancing > Target Groups
+Select target groups
+Select Instances
+specify a name
+(Once done you will be redirected to Register Targets)
+Here you will select instances that you need to balance load from
+Once selected click on create target group
+
+Now go to Load Balancers under Load Balancing
+
+select create load balancer
+specify loadbalancer name
+search for security groups and specified the one we created
+also specify listeners and routing default action to target groups we created
+
+Thats it done now go to the link provided at the end
+
+Refresh the page you will see the machines shifting causing the load to be balanced
