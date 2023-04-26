@@ -1,20 +1,43 @@
-// Install Firebase CLI using npm (installed node.js required)
-npm install -g firebase-tools
+Firebase Steps
 
-// Login into firebase
-firebase login
+download and install node
+>> powershell will open press enter and do till end
 
-// Initilaize firebase 
-(run on cmd within the folder containing website)
-firebase init 
-(select both line starting with hosting) [space to select]
-(enter once done)
+then go to cmd and install firebase using
+>> npm install -g firebase-tools
 
-// Deploy firebase
-firebase deploy
-(if you have an exesting project selecte >from existing)
-(else create new)
-(proceed ahead by entering 'y')
-(Enter your directory name) [use name as build]
+open a folder use this command to create an react app
+>> npx create-react-app my-app 
+(my-app is app name you can change it anytime)
 
+open created app folder and open cmd there and use this command to start website
+>> npm start
+(website will be started on browser means everything is success)
+
+Login firebase using
+>> firebase login
+
+Now stop the website by closing the terminal open new terminal there and initialize firebase
+>> firebase init
+
+(press y and then select hosting)
+
+at public write build
+github as no
+configure yes
+overwrite index.html no
+
+then press enter
+
+Now use this command to run build
+>> npm run build 
+
+Then use command firebase deploy
+>> firebase deploy
+
+You will se an hosting link open it
+
+if you see Firebase Hosting Setup Complete means you are wrong
+
+delete build and rerun all commands!!!
 
